@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import './index.css'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
-import TableReducer from './components/Tables/TablesReducer'
+import StepsReducers from './Reducers'
 
 const logger = store => next => action => {
   console.group(action.type)
@@ -17,7 +17,7 @@ const logger = store => next => action => {
   return result
 }
 
-const store = applyMiddleware(logger)(createStore)(TableReducer)
+const store = applyMiddleware(logger)(createStore)(StepsReducers)
 
 ReactDOM.render(
   <Provider store={store}>
