@@ -17,27 +17,29 @@ class FullBill extends Component {
     const tip = totalPaid - totalOrders
 
     return (
-      <div className="bill">
-        <h1>Table {currentTable}</h1>
+      <div className="wrapper">
+        <div className='title'>
+          Table {currentTable}
+        </div>
         {orders.map((order, i) => (
           <BillItem key={i} item={order.item} price={order.price} />
         ))}
+        <hr/>
         <div className="bill_total">
           <BillItem item='Total' price={totalOrders} />
         </div>
-        <div className='bill_left'>
+        <div className={`bill_left ${tip < 0 ? '' : 'paid'}`}>
           <BillItem item={'Remaining'} price={tip < 0 ? totalOrders - totalPaid : 0} />
         </div>
-        <div className="bill_tip">
+        <div className={`bill_tip ${tip > 0 ? 'positive' : ''}`}>
           <BillItem item={'Given in tips'} price={tip > 0 ? tip : 0} />
         </div>
-        <div className='bill_payment'>
-          Add payment
-          <button onClick={this.props.goToPayment}>Add</button>
-        </div>
-        <div className="bill_done">
-          Are you done with this table?
-          <button onClick={() => tip < 0 ? alert('This bill is not paid yet.') : this.props.tableIsPaid()} >
+        <div className='bill-options'>
+          <button className={`btn ${tip < 0 ? '' : 'warning'}`} 
+            onClick={this.props.goToPayment}>Add Payment
+          </button>
+          <button className={`btn ${tip < 0 ? 'warning' : ''}`} 
+            onClick={() => tip < 0 ? alert('This bill is not paid yet.') : this.props.tableIsPaid()} >
             Done
           </button>
         </div>

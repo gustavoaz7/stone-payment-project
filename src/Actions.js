@@ -1,5 +1,4 @@
 export function selectTable(table) {
-  console.log(table)
   return {
     type: 'TABLE_SELECTED',
     payload: {
@@ -15,8 +14,13 @@ export function goToPayment() {
   }
 }
 
+export function returnToBill() {
+  return {
+    type: 'RETURN_TO_BILL'
+  }
+}
+
 export function addPayment(payment) {
-  console.log(payment);
   return {
     type: 'ADD_PAYMENT',
     payload: payment

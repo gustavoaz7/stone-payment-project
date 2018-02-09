@@ -1,28 +1,130 @@
-.App {
+/* General styling */
+
+.wrapper {
+  display: block;
+  margin: 10px auto;
+  width: 70%;
+}
+
+.form-section {
+  margin-bottom: 10px;
+}
+
+.form-box {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.form-box:focus, .btn:focus {
+  border-color: #66e987;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 233, 130, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 233, 130, 0.6);
+}
+
+.btn {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 30px;
+  color: #fff;
+  font-size: 0.83em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background-color: rgb(51, 183, 78);
+  border-color: rgb(46, 164, 68);
+}
+.btn:hover {
+  background-color: #2b9028;
+  border-color: #207420;
+}
+.btn:hover:active {
+  background-color: #207429;
+  border-color: #124012;
+}
+
+.btn.warning {
+  background-color: #ecc61f;
+  border-color: #b99f1c;
+}
+.btn.warning:hover {
+  background-color: #d4a328;
+  border-color: #a7821c;
+}
+.btn.warning:hover:active {
+  background-color: #aa8e10;
+  border-color: #94700d;
+}
+
+.title {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 1.5em;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.subtitle {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.text-centered {
+  display: block;
+  text-align: center;
 }
 
-.App-title {
-  font-size: 1.5em;
+
+/* ImageTitle style */
+
+.image-title {
+  display: block;
+  margin: 50px auto;
 }
 
-.App-intro {
-  font-size: large;
+
+/* FullBill style */
+
+.bill_item {
+  margin-bottom: 5px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.bill_price {
+  float: right;
+}
+
+.bill_total {
+  color: #111;
+}
+
+.bill_left {
+  color: #e84343;
+}
+.bill_left.paid {
+  color: #666;
+}
+
+.bill_tip {
+  color: #666;
+}
+.bill_tip.positive {
+  color: #12b134;
+}
+
+.bill-options {
+  display: flex;
 }

@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     const { currentStep, currentTable, orders, payments } =  this.props
     return (
-      <div className="App">
+      <div>
         <ImageTitle />
         <SelectTable 
           currentStep={currentStep} />

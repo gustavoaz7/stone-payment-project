@@ -14,6 +14,9 @@ export default (state = INITIAL_VALUE, action) => {
     case 'GO_TO_PAYMENT':
       return { ...state, currentStep: state.currentStep+1 }
 
+    case 'RETURN_TO_BILL':
+      return { ...state, currentStep: state.currentStep-1 }
+
     case 'ADD_PAYMENT':
       return { ...state, payments: [ ...state.payments, action.payload ], currentStep: state.currentStep-1 }
     

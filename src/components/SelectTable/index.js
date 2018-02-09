@@ -23,18 +23,22 @@ class SelectTable extends Component {
     const data = getMockedData()
 
     return (
-      <form>
-        <label>Select a table:</label>
-        <select id="selectTable" >
-          {data.map((table, i) => (
-            <option key={i} value={JSON.stringify(table)}>Table {table.n}</option>
-          ))}
-        </select>
-        <button className='btn' 
-          onClick={this.handleSubmit}>
-          Next
-        </button>
-      </form>
+      <div className="wrapper">
+        <form>
+          <div className="form-section">
+            <label>Select a table:</label>
+            <select id="selectTable" className='form-box'>
+              {data.map((table, i) => (
+                <option key={i} value={JSON.stringify(table)}>Table {table.n}</option>
+              ))}
+            </select>
+          </div>
+          <button className='btn' 
+            onClick={this.handleSubmit}>
+            Next
+          </button>
+        </form>
+      </div>
     )
   }
 }
