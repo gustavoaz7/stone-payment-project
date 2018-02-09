@@ -1,16 +1,15 @@
 import React, { Component }from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 
-import BillItem from '../../common/BillItem'
-import { goToPayment, tableIsPaid, startOver } from '../../Actions'
+import BillItem from '../common/BillItem'
 
 class FullBill extends Component {
 
   render() {
     if (this.props.currentStep !== 2) return null;
 
-    const { currentTable, orders, payments } = this.props
+    const { currentTable, orders, payments,
+      goToPayment, tableIsPaid 
+    } = this.props
 
     const totalOrders = orders.reduce((prev, next) => prev + next.price, 0)
     const totalPaid = payments.length ? payments.reduce((prev, next) => prev + next.value, 0) : 0
@@ -40,10 +39,10 @@ class FullBill extends Component {
         </div>
         <div className='bill-options'>
           <button className={`btn ${tip < 0 ? '' : 'warning'}`} 
-            onClick={this.props.goToPayment}>Add Payment
+            onClick={goToPayment}>Add Payment
           </button>
           <button className={`btn ${tip < 0 ? 'warning' : ''}`} disabled={tip < 0 ? true : false}
-            onClick={this.props.tableIsPaid} >
+            onClick={tableIsPaid} >
             Done
           </button>
         </div>
@@ -52,12 +51,4 @@ class FullBill extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentTable: state.currentTable,
-  orders: state.orders,
-  payments: state.payments
-})
-
-const mapDispatchToProps = dispatch => bindActionCreators({ goToPayment, tableIsPaid, startOver }, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(FullBill)
+export default FullBill

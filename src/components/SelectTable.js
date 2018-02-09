@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux'
 
-import { getMockedData } from '../../utils/getMockedData'
-import { selectTable } from '../../Actions'
+import { getMockedData } from '../utils/getMockedData'
 
 class SelectTable extends Component {
 
@@ -32,6 +29,4 @@ class SelectTable extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ selectTable }, dispatch)
-
-export default connect(null, mapDispatchToProps)(SelectTable)
+export default SelectTable

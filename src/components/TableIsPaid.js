@@ -1,8 +1,4 @@
 import React, { Component }from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import { startOver } from '../../Actions'
 
 class TableIsPaid extends Component {
   constructor(props) {
@@ -35,6 +31,4 @@ class TableIsPaid extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ startOver }, dispatch)
-
-export default connect(null, mapDispatchToProps)(TableIsPaid)
+export default TableIsPaid

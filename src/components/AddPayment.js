@@ -1,8 +1,4 @@
 import React, { Component }from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import { addPayment, backToBill } from '../../Actions'
 
 class AddPayment extends Component {
   constructor(props) {
@@ -52,6 +48,5 @@ class AddPayment extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ addPayment, backToBill }, dispatch)
 
-export default connect(null, mapDispatchToProps)(AddPayment)
+export default AddPayment
