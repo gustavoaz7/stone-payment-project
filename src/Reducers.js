@@ -10,11 +10,11 @@ export default (state = INITIAL_VALUE, action) => {
   switch (action.type) {
     case 'TABLE_SELECTED':
       return { ...state, ...action.payload, currentStep: state.currentStep+1 }
-    
+  
     case 'GO_TO_PAYMENT':
       return { ...state, currentStep: state.currentStep+1 }
 
-    case 'RETURN_TO_BILL':
+    case 'BACK_TO_BILL':
       return { ...state, currentStep: state.currentStep-1 }
 
     case 'ADD_PAYMENT':

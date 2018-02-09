@@ -14,9 +14,9 @@ export function goToPayment() {
   }
 }
 
-export function returnToBill() {
+export function backToBill() {
   return {
-    type: 'RETURN_TO_BILL'
+    type: 'BACK_TO_BILL'
   }
 }
 

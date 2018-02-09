@@ -2,16 +2,16 @@ import React, { Component }from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { addPayment, returnToBill } from '../../Actions'
+import { addPayment, backToBill } from '../../Actions'
 
 class AddPayment extends Component {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleReturn = this.handleReturn.bind(this)
+    this.handlePay = this.handlePay.bind(this)
+    this.handleBack = this.handleBack.bind(this)
   }
 
-  handleSubmit(e) {
+  handlePay(e) {
     e.preventDefault()
     const method = document.getElementById('paymentMethod').value
     const value = Math.round(document.getElementById('paymentValue').value * 100) / 100
@@ -19,9 +19,9 @@ class AddPayment extends Component {
     this.props.addPayment(payment)
   }
 
-  handleReturn(e) {
+  handleBack(e) {
     e.preventDefault()
-    this.props.returnToBill()
+    this.props.backToBill()
   }
 
   render() {
@@ -42,8 +42,8 @@ class AddPayment extends Component {
             <label>Value</label>
             <input className='form-box' id="paymentValue" type="number" required min="0" step="0.01" placeholder="0.00" />
             <div className='bill-options'>
-              <input className='btn warning' type="submit" value="Return" onClick={this.handleReturn} />
-              <input className='btn' type="submit" value="Submit" onClick={this.handleSubmit} />
+              <input className='btn warning' type="submit" value="Back" onClick={this.handleBack} />
+              <input className='btn' type="submit" value="Pay" onClick={this.handlePay} />
             </div>
           </div>
           </form>
@@ -52,6 +52,6 @@ class AddPayment extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ addPayment, returnToBill }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ addPayment, backToBill }, dispatch)
 
 export default connect(null, mapDispatchToProps)(AddPayment)

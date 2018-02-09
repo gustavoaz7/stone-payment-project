@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import BillItem from '../../common/BillItem'
-import { goToPayment, tableIsPaid } from '../../Actions'
+import { goToPayment, tableIsPaid, startOver } from '../../Actions'
 
 class FullBill extends Component {
 
@@ -28,18 +28,22 @@ class FullBill extends Component {
         <div className="bill_total">
           <BillItem item='Total' price={totalOrders} />
         </div>
+        <hr/>
+        <div className='bill_paid'>
+          <BillItem item='Paid' price={totalPaid} />
+        </div>
         <div className={`bill_left ${tip < 0 ? '' : 'paid'}`}>
-          <BillItem item={'Remaining'} price={tip < 0 ? totalOrders - totalPaid : 0} />
+          <BillItem item='Remaining' price={tip < 0 ? totalOrders - totalPaid : 0} />
         </div>
         <div className={`bill_tip ${tip > 0 ? 'positive' : ''}`}>
-          <BillItem item={'Given in tips'} price={tip > 0 ? tip : 0} />
+          <BillItem item='Given in tips' price={tip > 0 ? tip : 0} />
         </div>
         <div className='bill-options'>
           <button className={`btn ${tip < 0 ? '' : 'warning'}`} 
             onClick={this.props.goToPayment}>Add Payment
           </button>
-          <button className={`btn ${tip < 0 ? 'warning' : ''}`} 
-            onClick={() => tip < 0 ? alert('This bill is not paid yet.') : this.props.tableIsPaid()} >
+          <button className={`btn ${tip < 0 ? 'warning' : ''}`} disabled={tip < 0 ? true : false}
+            onClick={this.props.tableIsPaid} >
             Done
           </button>
         </div>
@@ -54,6 +58,6 @@ const mapStateToProps = state => ({
   payments: state.payments
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ goToPayment, tableIsPaid }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ goToPayment, tableIsPaid, startOver }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(FullBill)

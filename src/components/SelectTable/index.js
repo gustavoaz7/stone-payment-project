@@ -6,37 +6,26 @@ import { getMockedData } from '../../utils/getMockedData'
 import { selectTable } from '../../Actions'
 
 class SelectTable extends Component {
-  constructor(props) {
-    super()
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const table = JSON.parse(document.getElementById('selectTable').value)
-    this.props.selectTable(table) 
+  renderOptions = (data) => {
+    return data.map((table, i) => (
+      <span key={i} className="form-list-item"
+         onClick={() => this.props.selectTable(table)}>
+        Table {table.n}
+      </span>
+    ))
   }
 
   render() {
     if (this.props.currentStep !== 1) return null;
 
-    const data = getMockedData()
-
     return (
       <div className="wrapper">
         <form>
-          <div className="form-section">
-            <label>Select a table:</label>
-            <select id="selectTable" className='form-box'>
-              {data.map((table, i) => (
-                <option key={i} value={JSON.stringify(table)}>Table {table.n}</option>
-              ))}
-            </select>
+          <h3>Select a table:</h3>
+          <div className="form-list">
+            {this.renderOptions(getMockedData())}
           </div>
-          <button className='btn' 
-            onClick={this.handleSubmit}>
-            Next
-          </button>
         </form>
       </div>
     )
