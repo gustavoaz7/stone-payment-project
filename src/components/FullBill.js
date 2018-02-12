@@ -7,9 +7,10 @@ class FullBill extends Component {
   render() {
     if (this.props.currentStep !== 2) return null;
 
-    const { currentTable, orders, payments,
-      goToPayment, tableIsPaid 
+    const { currentTable, tables,
+      goToPayment, tableIsPaid, startOver
     } = this.props
+    const { orders, payments } = tables[currentTable]
 
     const totalOrders = orders.reduce((prev, next) => prev + next.price, 0)
     const totalPaid = payments.length ? payments.reduce((prev, next) => prev + next.value, 0) : 0
@@ -31,6 +32,13 @@ class FullBill extends Component {
         <div className='bill_paid'>
           <BillItem item='Paid' price={totalPaid} />
         </div>
+        {/* <div className='bill_paid'>
+          Payments:
+          {payments.map((payment, i) => (
+            <BillItem key={i} item={payment.method} price={payment.value} />
+          ))}
+        </div>
+        <hr/> */}
         <div className={`bill_left ${tip < 0 ? '' : 'paid'}`}>
           <BillItem item='Remaining' price={tip < 0 ? totalOrders - totalPaid : 0} />
         </div>
@@ -46,6 +54,10 @@ class FullBill extends Component {
             Done
           </button>
         </div>
+        <button className='btn warning full-width'
+          onClick={startOver} >
+          Back
+        </button>
       </div>
     )
   }

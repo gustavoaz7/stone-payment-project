@@ -13,7 +13,7 @@ import { selectTable, goToPayment, backToBill, addPayment, tableIsPaid, startOve
 class App extends Component {
 
   render() {
-    const { currentStep, currentTable, orders, payments,
+    const { currentStep, currentTable, tables,
       selectTable, goToPayment, backToBill, addPayment, tableIsPaid, startOver 
     } =  this.props
     return (
@@ -21,15 +21,15 @@ class App extends Component {
         <ImageTitle />
         <SelectTable 
           currentStep={currentStep}
-          selectTable={selectTable} />
+          selectTable={selectTable}
+          tables={tables} />
         <FullBill 
           currentStep={currentStep} 
           currentTable={currentTable} 
-          orders={orders} 
-          payments={payments} 
           goToPayment={goToPayment} 
           tableIsPaid={tableIsPaid} 
-          startOver={startOver} />
+          startOver={startOver}
+          tables={tables} />
         <AddPayment 
           currentStep={currentStep} 
           addPayment={addPayment} 
@@ -45,8 +45,7 @@ class App extends Component {
 const mapStateToProps = state => ({
   currentStep: state.currentStep,
   currentTable: state.currentTable,
-  orders: state.orders,
-  payments: state.payments,
+  tables: state.tables
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

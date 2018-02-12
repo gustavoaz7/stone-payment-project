@@ -1,10 +1,7 @@
 export function selectTable(table) {
   return {
     type: 'TABLE_SELECTED',
-    payload: {
-      currentTable: table.n,
-      orders: table.orders
-    }
+    payload: table.n
   }
 }
 

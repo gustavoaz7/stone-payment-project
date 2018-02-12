@@ -1,12 +1,8 @@
 import React, { Component }from 'react'
 
 class TableIsPaid extends Component {
-  constructor(props) {
-    super()
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault()
     this.props.startOver()
   }

@@ -42,7 +42,7 @@ class AddPayment extends Component {
               <input className='btn' type="submit" value="Pay" onClick={this.handlePay} />
             </div>
           </div>
-          </form>
+        </form>
       </div>
     )
   }

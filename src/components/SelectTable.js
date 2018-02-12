@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 
-import { getMockedData } from '../utils/getMockedData'
-
 class SelectTable extends Component {
 
-  renderOptions = (data) => {
-    return data.map((table, i) => (
-      <span key={i} className="form-list-item"
-         onClick={() => this.props.selectTable(table)}>
+  renderOptions = (tables) => {
+    const unpaidTables = Object.values(tables).filter(table => !table.isPaid )
+    return unpaidTables.map(table => (
+      <span key={table.n} className="form-list-item"
+         onClick={() => this.props.selectTable(tables[table.n])}>
         Table {table.n}
       </span>
     ))
@@ -21,7 +20,7 @@ class SelectTable extends Component {
         <form>
           <h3>Select a table:</h3>
           <div className="form-list">
-            {this.renderOptions(getMockedData())}
+            {this.renderOptions(this.props.tables)}
           </div>
         </form>
       </div>
